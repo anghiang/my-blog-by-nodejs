@@ -1,0 +1,61 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>杨志刚的个人博客</title>
+	<link rel="stylesheet" href="/css/alert_css/alert.css" />
+	<link rel="stylesheet" href="/css/index&register_css/style.css" />
+	<link rel="stylesheet" href="/metionFont/iconfont.css">
+	<link rel="stylesheet" href="/sweetalert-master/lib/sweet-alert.css">
+	<style>
+		body {
+			background-image: url('../images/1.jpg');
+			background-size: cover;
+		}
+	</style>
+
+<body>
+
+	<div class="login-container">
+		<h1>欢迎来到杨志刚的个人博客</h1>
+
+		<div class="connect">
+			<p>登入界面</p>
+		</div>
+		<div class="metion" style="display: none;">
+			<span class="iconfont icon-tishi" style="color: red;"></span>
+			<span class="metion_text"></span>
+
+		</div>
+		<form action="/" method="post" id="loginForm" onsubmit="return false">
+			<div>
+				<input type="text" name="userName" class="username" placeholder="用户名" autocomplete="off" />
+			</div>
+			<div>
+				<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false"
+					onpaste="return false" />
+			</div>
+			<button id="submit" type="submit">登 陆</button>
+		</form>
+
+		<a href="/register">
+			<button type="button" class="register-tis">还有没有账号？</button>
+		</a>
+	</div>
+	<a href="/managerLogin">
+		<button type="button" class="register-tis">进入后台管理</button>
+	</a>
+	<!-- 弹出框 -->
+	<script src="/sweetalert-master/lib/sweet-alert.min.js"></script>
+	<script src="/js/login_register/jquery.min.js"></script>
+	<script src="/js/verification_js/login_verification.js"></script>
+	<script src="/js/login_register/common.js"></script>
+	<!--背景图片自动更换-->
+	<script src="/js/login_register/supersized.3.2.7.min.js"></script>
+	<script src="/js/login_register/supersized-init.js"></script>
+</body>
+
+</html>

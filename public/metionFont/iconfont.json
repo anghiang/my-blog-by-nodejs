@@ -1,0 +1,16 @@
+{
+  "id": "2549984",
+  "name": "提示",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15280550",
+      "name": "提示",
+      "font_class": "tishi",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    }
+  ]
+}

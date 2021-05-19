@@ -1,0 +1,124 @@
+﻿<!--
+    
+ @Name：不落阁整站模板源码
+ @Author：Absolutely
+ @Site：http://www.lyblogs.cn
+
+ -->
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>不落阁 - 发表文章</title>
+    <link rel="shortcut icon" href="/images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="/plug/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="/plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="/css/home_css/global.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/resource_css/resource.css">
+</head>
+
+<body>
+    <!-- 导航 -->
+    <nav class="blog-nav layui-header">
+        <div class="blog-container">
+            <!-- QQ互联登陆 -->
+            <a href="javascript:;" class="blog-user">
+                <i class="fa fa-qq"></i>
+            </a>
+            <a href="javascript:;" class="blog-user layui-hide">
+                <img src="/images/Absolutely.jpg" alt="Absolutely" title="Absolutely" />
+            </a>
+            <!-- 不落阁 -->
+            <a class="blog-logo" href="/home">不落阁</a>
+            <!-- 导航菜单 -->
+            <ul class="layui-nav" lay-filter="nav">
+                <li class="layui-nav-item">
+                    <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="/resource"><i class="fa fa-tags fa-fw"></i>&nbsp;发表文章</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/timeline"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/about"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+                </li>
+            </ul>
+            <!-- 手机和平板的导航开关 -->
+            <a class="blog-navicon" href="javascript:;">
+                <i class="fa fa-navicon"></i>
+            </a>
+        </div>
+    </nav>
+
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md12" style="color: royalblue;">
+                <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+                    <a href="/home" title="网站首页">网站首页</a>
+                    <a><cite>发表文章</cite></a>
+                </blockquote>
+            </div>
+        </div>
+        <div class="layui-row">
+            <form class="layui-form" action="" id="form_1">
+                <div class="blog-module shadow" style="box-shadow: 0 1px 8px #a6a6a6;">
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-bottom:0">
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">文章标题:</label>
+                            <div class="layui-input-block" style="width: 200px;">
+                                <input type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                                    autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">文章内容:</label>
+                            <div class="layui-input-block">
+                                <textarea id="demo" placeholder="请输入内容" class="layui-textarea "></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">发布</button>
+                            </div>
+                        </div>
+
+                </div>
+                </fieldset>
+        </div>
+
+        </form>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="blog-footer">
+        <div><span>江西软件职业技术大学区块链学院</span></div>
+        <div><span>开始于2021年4月14日星期三</span></div>
+    </footer>
+
+    <!--遮罩-->
+    <!-- <div class="blog-mask animated layui-hide"></div> -->
+    <!-- layui.js -->
+    <script src="/plug/layui/layui.js"></script>
+    <!-- 全局脚本 -->
+    <script src="/js/home_js/global.js"></script>
+    <script src="/js/layedite_js/layedite.js"></script>
+
+</body>
+
+</html>

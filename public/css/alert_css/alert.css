@@ -1,0 +1,28 @@
+
+        .metion {
+            width: 270px;
+            height: 26px;
+            background-color: #b9faff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+            position: absolute;
+            top: 189px;
+            left: 790px;
+        }
+
+        .icon-tishi {
+            color: #e87a7a;
+            font-weight: bolder;
+            font-size: 20px;
+            height: 26px;
+            line-height: 26px;
+            position: absolute;
+            left: 9px;
+        }
+
+        .metion_text {
+            height: 26px;
+            line-height: 26px;
+            color: black;
+            font-size: 14px;
+        }
