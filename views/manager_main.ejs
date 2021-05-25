@@ -63,20 +63,20 @@
     <div class="row">
       <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
         <ul class="nav nav-sidebar">
-          <li class="active"><a href="/main">报告</a></li>
+          <li class="active"><a href="/managerMain">报告</a></li>
         </ul>
         <ul class="nav nav-sidebar">
-          <li><a href="/article">文章</a></li>
-          <li><a href="notice.html">公告</a></li>
-          <li><a href="comment.html">评论</a></li>
+          <li><a href="/managerArticle">文章</a></li>
+          <li><a href="/notice">公告</a></li>
+          <li><a href="/comment">评论</a></li>
           <li><a data-toggle="tooltip" data-placement="bottom" title="网站暂无留言功能">留言</a></li>
         </ul>
         <ul class="nav nav-sidebar">
-          <li><a href="category.html">栏目</a></li>
+          <li><a href="/category">栏目</a></li>
           <li><a class="dropdown-toggle" id="otherMenu" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">其他</a>
             <ul class="dropdown-menu" aria-labelledby="otherMenu">
-              <li><a href="flink.html">友情链接</a></li>
+              <li><a href="/flink">友情链接</a></li>
               <li><a data-toggle="modal" data-target="#areDeveloping">访问记录</a></li>
             </ul>
           </li>
@@ -86,16 +86,16 @@
               aria-expanded="false">用户</a>
             <ul class="dropdown-menu" aria-labelledby="userMenu">
               <li><a data-toggle="modal" data-target="#areDeveloping">管理用户组</a></li>
-              <li><a href="manage-user.html">管理用户</a></li>
+              <li><a href="/manage-user">管理用户</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="loginlog.html">管理登录日志</a></li>
+              <li><a href="/loginlog">管理登录日志</a></li>
             </ul>
           </li>
           <li><a class="dropdown-toggle" id="settingMenu" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">设置</a>
             <ul class="dropdown-menu" aria-labelledby="settingMenu">
-              <li><a href="setting.html">基本设置</a></li>
-              <li><a href="readset.html">阅读设置</a></li>
+              <li><a href="/setting">基本设置</a></li>
+              <li><a href="/readset">阅读设置</a></li>
               <li role="separator" class="divider"></li>
               <li><a data-toggle="modal" data-target="#areDeveloping">安全配置</a></li>
               <li role="separator" class="divider"></li>
@@ -323,7 +323,8 @@
               aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="WeChatModalLabel" style="cursor:default;">微信扫一扫</h4>
         </div>
-        <div class="modal-body" style="text-align:center"> <img src="images/weixin.jpg" alt="" style="cursor:pointer" />
+        <div class="modal-body" style="text-align:center"> <img src="/images/manager_images/weixin.jpg" alt=""
+            style="cursor:pointer" />
         </div>
       </div>
     </div>
@@ -338,7 +339,7 @@
               aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="areDevelopingModalLabel" style="cursor:default;">该功能正在日以继夜的开发中…</h4>
         </div>
-        <div class="modal-body"> <img src="images/baoman/baoman_01.gif" alt="深思熟虑" />
+        <div class="modal-body"> <img src="/images/manager_images/baoman/baoman_01.gif" alt="深思熟虑" />
           <p style="padding:15px 15px 15px 100px; position:absolute; top:15px; cursor:default;">
             很抱歉，程序猿正在日以继夜的开发此功能，本程序将会在以后的版本中持续完善！</p>
         </div>
@@ -358,8 +359,8 @@
       <li class="list-group-item"><span>浏览器：</span>Chrome47</li>
     </ul>
   </div>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/admin-scripts.js"></script>
+  <script src="/js/manager_js/bootstrap.min.js"></script>
+  <script src="/js/manager_js/admin-scripts.js"></script>
 </body>
 
 </html>

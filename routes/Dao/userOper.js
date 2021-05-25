@@ -2,6 +2,7 @@ const { json } = require('express')
 let db = require('../Util/mysqlConnection')
 let md5 = require('blueimp-md5')
 let sql = require('./sql')
+let getNowTime = require('../Util/getNowTime').getNowTime()
 
 
 exports.userRegister = async (body, callback) => {
@@ -24,7 +25,7 @@ exports.userRegister = async (body, callback) => {
                 callback(null, '2')
             } else {
                 body.password = md5(md5(body.password))
-                db.db(sql.registerSql(body), (err, data) => {
+                db.db(sql.registerSql(body, getNowTime), (err) => {
                     if (err) {
                         callback(err, null)
                     }

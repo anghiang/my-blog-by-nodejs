@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>文章 - 异清轩博客管理系统</title>
+  <title>写文章 - 异清轩博客管理系统</title>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/css/manager_css/style.css">
   <link rel="stylesheet" type="text/css" href="/css/manager_css/font-awesome.min.css">
-  <link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
+  <link rel="apple-touch-icon-precomposed" href="/images/manager_images/icon/icon.png">
   <link rel="shortcut icon" href="/images/manager_images/icon/favicon.ico">
   <script src="/js/manager_js/jquery-2.1.4.min.js"></script>
   <!--[if gte IE 9]>
@@ -45,14 +45,14 @@
                   <li><a title="查看您的登录记录" data-toggle="modal" data-target="#seeUserLoginlog">登录记录</a></li>
                 </ul>
               </li>
-              <li><a href="/Index/outLogin" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
+              <li><a href="/managerLogin" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
               <li><a data-toggle="modal" data-target="#WeChat">帮助</a></li>
             </ul>
-            <form action="/managerSearch-article" method="post" class="navbar-form navbar-right" role="search">
+            <form action="" method="post" class="navbar-form navbar-right" role="search">
               <div class="input-group">
-                <input type="text" class="form-control Sinput" autocomplete="off" placeholder="键入关键字搜索" maxlength="15">
+                <input type="text" class="form-control" autocomplete="off" placeholder="键入关键字搜索" maxlength="15">
                 <span class="input-group-btn">
-                  <button class="btn btn-default search" type="submit">搜索</button>
+                  <button class="btn btn-default" type="submit">搜索</button>
                 </span>
               </div>
             </form>
@@ -66,18 +66,18 @@
           <li><a href="/managerMain">报告</a></li>
         </ul>
         <ul class="nav nav-sidebar">
-          <li class="active"><a href="/article">文章</a></li>
-          <li><a href="/notice">公告</a></li>
-          <li><a href="/comment">评论</a></li>
+          <li class="active"><a href="/managerArticle">文章</a></li>
+          <li><a href="notice.html">公告</a></li>
+          <li><a href="comment.html">评论</a></li>
           <li><a data-toggle="tooltip" data-placement="top" title="网站暂无留言功能">留言</a></li>
         </ul>
         <ul class="nav nav-sidebar">
-          <li><a href="/category">栏目</a></li>
+          <li><a href="category.html">栏目</a></li>
           <li><a class="dropdown-toggle" id="otherMenu" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">其他</a>
             <ul class="dropdown-menu" aria-labelledby="otherMenu">
-              <li><a href="/user-group">友情链接</a></li>
-              <li><a href="/loginlog">访问记录</a></li>
+              <li><a href="user-group.html">友情链接</a></li>
+              <li><a href="loginlog.html">访问记录</a></li>
             </ul>
           </li>
         </ul>
@@ -86,18 +86,18 @@
               aria-expanded="false">用户</a>
             <ul class="dropdown-menu" aria-labelledby="userMenu">
               <li><a href="user-group.html">管理用户组</a></li>
-              <li><a href="/manage-user">管理用户</a></li>
+              <li><a href="manage-user.html">管理用户</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="/loginlog">管理登录日志</a></li>
+              <li><a href="loginlog.html">管理登录日志</a></li>
             </ul>
           </li>
           <li><a class="dropdown-toggle" id="settingMenu" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">设置</a>
             <ul class="dropdown-menu" aria-labelledby="settingMenu">
-              <li><a href="/setting">基本设置</a></li>
-              <li><a href="/readset">用户设置</a></li>
+              <li><a href="setting.html">基本设置</a></li>
+              <li><a href="readset.html">用户设置</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="/safety">安全配置</a></li>
+              <li><a href="safety.html">安全配置</a></li>
               <li role="separator" class="divider"></li>
               <li class="disabled"><a>扩展菜单</a></li>
             </ul>
@@ -105,78 +105,89 @@
         </ul>
       </aside>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
-        <form action="/Article/checkAll" method="post">
-          <h1 class="page-header">操作</h1>
-          <ol class="breadcrumb">
-            <li><a href="/managerAdd-article">增加文章</a></li>
-          </ol>
-          <h1 class="page-header">管理 <span class="badge">7</span></h1>
-          <div class="table-responsive">
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th><span class="glyphicon "></span> <span class="visible-lg">选择</span></th>
-                  <th><span class="glyphicon "></span> <span class="visible-lg">标题</span></th>
-                  <th class="hidden-sm"><span class="glyphicon"></span> <span class="visible-lg">关键词</span>
-                  </th>
-                  <th class="hidden-sm"><span class="glyphicon "></span> <span class="visible-lg">评论量</span></th>
-                  <th class="hidden-sm"><span class="glyphicon "></span> <span class="visible-lg">浏览量</span></th>
-                  <th class="hidden-sm"><span class="glyphicon "></span> <span class="visible-lg">点赞数</span></th>
-                  <th><span class="glyphicon "></span> <span class="visible-lg">日期</span></th>
-                  <th><span class="glyphicon "></span> <span class="visible-lg">操作</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% for(let ar of data) {%>
-                  <tr>
-                    <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
-                    <td class="article-title">
-                      <%=ar.title%>
-                    </td>
-                    <td class="hidden-sm">
-                      <%=ar.keywords%>
-                    </td>
-                    <td class="hidden-sm">
-                      <%=ar.commentSum%>
-                    </td>
-                    <td class="hidden-sm">
-                      <%=ar.page_view%>
-                    </td>
-                    <td class="hidden-sm">
-                      <%=ar.thumbUpQuantity%>
-                    </td>
-                    <td>
-                      <%=ar.release_time%>
-                    </td>
-                    <td><a rel=" <%=ar.id%>">修改</a> <a rel=" <%=ar.id%>">删除</a></td>
-                  </tr>
-                  <% } %>
-              </tbody>
-            </table>
-          </div>
-          <footer class="message_footer">
-            <nav>
-              <div class="btn-toolbar operation" role="toolbar">
-                <div class="btn-group" role="group"> <a class="btn btn-default" onClick="select()">全选</a> <a
-                    class="btn btn-default" onClick="reverse()">反选</a> <a class="btn btn-default"
-                    onClick="noselect()">不选</a> </div>
-                <div class="btn-group" role="group">
-                  <button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="bottom"
-                    title="删除全部选中" name="checkbox_delete">删除</button>
+        <div class="row">
+          <form action="/managerAdd-article" method="post" class="add-article-form">
+            <div class="col-md-9">
+              <h1 class="page-header">撰写新文章</h1>
+              <div class="form-group">
+                <label for="article-title" class="sr-only">标题</label>
+                <input type="text" id="article-title" name="title" class="form-control" placeholder="在此处输入标题" required
+                  autofocus autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label for="article-content" class="sr-only">内容</label>
+                <script id="article-content" name="content" type="text"></script>
+              </div>
+              <div class="add-article-box">
+                <h2 class="add-article-box-title"><span>关键字</span></h2>
+                <div class="add-article-box-content">
+                  <input type="text" class="form-control" placeholder="请输入关键字" name="keywords" autocomplete="off">
+                  <span class="prompt-text">多个标签请用英文逗号,隔开。</span>
                 </div>
               </div>
-              <ul class="pagination pagenav">
-                <li class="disabled"><a aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a> </li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a> </li>
-              </ul>
-            </nav>
-          </footer>
-        </form>
+            </div>
+            <div class="col-md-3">
+              <h1 class="page-header">操作</h1>
+              <div class="add-article-box">
+                <h2 class="add-article-box-title"><span>栏目</span></h2>
+                <div class="add-article-box-content">
+                  <ul class="category-list">
+                    <li>
+                      <label>
+                        <input type="radio" value="1" checked>
+                        这是栏目 <em class="hidden-md">( 栏目ID: <span>1</span> )</em></label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" value="2">
+                        这是栏目 <em class="hidden-md">( 栏目ID: <span>2</span> )</em></label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" value="3">
+                        这是栏目 <em class="hidden-md">( 栏目ID: <span>3</span> )</em></label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" value="4">
+                        这是栏目 <em class="hidden-md">( 栏目ID: <span>4</span> )</em></label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" value="5">
+                        这是栏目 <em class="hidden-md">( 栏目ID: <span>5</span> )</em></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="add-article-box">
+                <h2 class="add-article-box-title"><span>标签</span></h2>
+                <div class="add-article-box-content">
+                  <input type="text" class="form-control" placeholder="输入新标签" autocomplete="off">
+                  <span class="prompt-text">多个标签请用英文逗号,隔开</span>
+                </div>
+              </div>
+              <div class="add-article-box">
+                <h2 class="add-article-box-title"><span>标题图片</span></h2>
+                <div class="add-article-box-content">
+                  <input type="text" class="form-control" placeholder="点击按钮选择图片" id="pictureUpload" autocomplete="off">
+                </div>
+                <div class="add-article-box-footer">
+                  <button class="btn btn-default" type="button" ID="upImage">选择</button>
+                </div>
+              </div>
+              <div class="add-article-box">
+                <h2 class="add-article-box-title"><span>发布</span></h2>
+                <div class="add-article-box-content">
+                  <p><label>发布人：</label><span class="article-status-display">杨志刚</span></p>
+                </div>
+                <div class="add-article-box-footer">
+                  <button class="btn btn-primary" type="submit">发布</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -297,7 +308,8 @@
               aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="WeChatModalLabel" style="cursor:default;">微信扫一扫</h4>
         </div>
-        <div class="modal-body" style="text-align:center"> <img src="images/weixin.jpg" alt="" style="cursor:pointer" />
+        <div class="modal-body" style="text-align:center"> <img src="/images/manager_images/weixin.jpg" alt=""
+            style="cursor:pointer" />
         </div>
       </div>
     </div>
@@ -334,82 +346,47 @@
   </div>
   <script src="/js/manager_js/bootstrap.min.js"></script>
   <script src="/js/manager_js/admin-scripts.js"></script>
-  <script>
-    //是否确认删除
-
-
-    $("#main table tbody tr td a").click(function () {
-      var name = $(this);
-      var id = name.attr("rel"); //对应id  
-      if (event.srcElement.outerText == "修改") {
-        window.location.href = "/managerUpdate-article?id=" + id + ""
-      };
+  <script src="/manager_lib/ueditor/ueditor.config.js"></script>
+  <script src="/manager_lib/ueditor/ueditor.all.min.js"> </script>
+  <script src="/manager_lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+  <script id="uploadEditor" type="text/plain" style="display:none;"></script>
+  <script type="text/javascript">
+    var editor = UE.getEditor('article-content');
+    window.onresize = function () {
+      window.location.reload();
+    }
+    var _uploadEditor;
+    $(function () {
+      //重新实例化一个编辑器，防止在上面的editor编辑器中显示上传的图片或者文件
+      _uploadEditor = UE.getEditor('uploadEditor');
+      _uploadEditor.ready(function () {
+        //设置编辑器不可用
+        //_uploadEditor.setDisabled();
+        //隐藏编辑器，因为不会用到这个编辑器实例，所以要隐藏
+        _uploadEditor.hide();
+        //侦听图片上传
+        _uploadEditor.addListener('beforeInsertImage', function (t, arg) {
+          //将地址赋值给相应的input,只去第一张图片的路径
+          $("#pictureUpload").attr("value", arg[0].src);
+          //图片预览
+          //$("#imgPreview").attr("src", arg[0].src);
+        })
+        //侦听文件上传，取上传文件列表中第一个上传的文件的路径
+        _uploadEditor.addListener('afterUpfile', function (t, arg) {
+          $("#fileUpload").attr("value", _uploadEditor.options.filePath + arg[0].url);
+        })
+      });
     });
-
-    $('form').on('submit', function (e) {
-      e.preventDefault()
-      let sValue = $('.Sinput').val()
-      $.ajax({
-        type: "post",
-        url: "/managerSearch-article",
-        dataType: 'json',
-        data: { sValue: sValue },
-        success: function (data) {
-          let inner;
-          for (let i = 0; i < data.article.length; i++) {
-            inner += ` <tr>
-                    <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
-                    <td class="article-title">
-                      ${data.article[i].title} 
-                    </td>
-                    <td class="hidden-sm">
-                      ${data.article[i].keywords} 
-                    </td>
-                    <td class="hidden-sm">
-                      ${data.article[i].commentSum} 
-                    </td>
-                    <td class="hidden-sm">
-                      ${data.article[i].page_view} 
-                    </td>
-                    <td class="hidden-sm">
-                      ${data.article[i].thumbUpQuantity} 
-                    </td>
-                    <td>
-                      ${data.article[i].release_time} 
-                    </td>
-                    <td><a rel=" ${data.article[i].id}">修改</a> <a rel=" ${data.article[i].id}">删除</a></td>
-                  </tr>`
-          }
-          $('.table tbody').html(inner)
-        },
-        error: function (err) {
-          console.log(err)
-        }
-
-      })
-
-    })
-    $(" table tbody tr td a").click(function () {
-      var name = $(this);
-      var id = name.attr("rel"); //对应id  
-      if (event.srcElement.outerText == "删除") {
-        if (window.confirm("此操作不可逆，是否确认？")) {
-          $.ajax({
-            type: "get",
-            url: "/managerDelete-article?id=" + id + "",
-            dataType: "json",
-            success: function (data) {
-              if (data.success == "ok") {
-                window.location.href = "/managerArticle";
-              }
-            },
-            error: function (err) {
-              console.log(err)
-            }
-          });
-        };
-      };
+    //弹出图片上传的对话框
+    $('#upImage').click(function () {
+      var myImage = _uploadEditor.getDialog("insertimage");
+      myImage.open();
     });
+    //弹出文件上传的对话框
+    function upFiles() {
+      var myFiles = _uploadEditor.getDialog("attachment");
+      myFiles.open();
+    }
   </script>
 </body>
 

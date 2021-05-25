@@ -5,19 +5,13 @@ let userOper = require('../Dao/userOper')
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-    res.render('managerLogin');
+    res.render('manager_login');
 });
 router.post('/', function (req, res) {
     let body = req.body
-    userOper.userLogin(body, (err, code) => {
-        if (err) {
-            console.log(err)
-        }
-        if (code == '0') {
-            res.redirect('')
-        }
-
-    })
+    if (body.username == "杨志刚" && body.password == '123123') {
+        res.redirect('managerMain')
+    }
 })
 
 module.exports = router;

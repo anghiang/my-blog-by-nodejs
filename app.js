@@ -16,6 +16,11 @@ let blogTilelineRouter = require('./routes/action/timeline')
 let managerLoginRouter = require('./routes/action/manager_login')
 let managerArticleRouter = require('./routes/action/managerArticle')
 let managerMainRouter = require('./routes/action/managerMain')
+let managerAddarticleRouter = require('./routes/action/managerAddarticle')
+let managerDeleteArticleRouter = require('./routes/action/managerDeleteArticle')
+let managerUpdateArticleRouter = require('./routes/action/managerUpdateArticle')
+let managerSearchArticleRouter = require('./routes/action/managerSearchArticle')
+
 
 
 var app = express();
@@ -52,6 +57,11 @@ app.use('/timeline', blogTilelineRouter)
 app.use('/managerLogin', managerLoginRouter)
 app.use('/managerArticle', managerArticleRouter)
 app.use('/managerMain', managerMainRouter)
+app.use('/managerAdd-article', managerAddarticleRouter)
+app.use('/managerDelete-article', managerDeleteArticleRouter)
+app.use('/managerUpdate-article', managerUpdateArticleRouter)
+app.use('/managerSearch-article', managerSearchArticleRouter)
+
 
 
 // catch 404 and forward to error handler

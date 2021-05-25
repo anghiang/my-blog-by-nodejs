@@ -1,16 +1,16 @@
 var express = require('express');
-var router = express.Router();
 let managerOper = require('../Dao/managerOper')
 
+var router = express.Router();
+
 router.get('/', (req, res) => {
-    managerOper.showArticle((err, data) => {
+    let id = req.query.id
+    managerOper.deleteArticle(id, res, (err) => {
         if (err) {
             throw err
         }
-        if (data) {
-            res.render('manager_article', { data: data })
-
-        }
     })
 })
+
+
 module.exports = router;
