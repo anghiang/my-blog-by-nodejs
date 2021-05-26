@@ -20,6 +20,9 @@ let managerAddarticleRouter = require('./routes/action/managerAddarticle')
 let managerDeleteArticleRouter = require('./routes/action/managerDeleteArticle')
 let managerUpdateArticleRouter = require('./routes/action/managerUpdateArticle')
 let managerSearchArticleRouter = require('./routes/action/managerSearchArticle')
+let manageUserRouter = require('./routes/action/manage_user')
+let loginlogRouter = require('./routes/action/loginlog')
+let managerCommentRouter = require('./routes/action/manager_comment')
 
 
 
@@ -61,6 +64,9 @@ app.use('/managerAdd-article', managerAddarticleRouter)
 app.use('/managerDelete-article', managerDeleteArticleRouter)
 app.use('/managerUpdate-article', managerUpdateArticleRouter)
 app.use('/managerSearch-article', managerSearchArticleRouter)
+app.use('/manageUser', manageUserRouter)
+app.use('/loginlog', loginlogRouter)
+app.use('/managerComment', managerCommentRouter)
 
 
 

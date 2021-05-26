@@ -61,8 +61,10 @@ exports.findArticleByName = (title, callback) => {
         if (err) {
             callback(err)
         }
-        if (data) {
-            callback(null, data)
+        if (data.length != 0) {
+            callback(null, data, "0")
+        } else if (data.length == 0) {
+            callback(null, null, "1")
         }
     })
 }
