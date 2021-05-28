@@ -32,3 +32,17 @@ exports.updateArticle = (body, update_time) => {
 exports.searchArticleByTitle = (keywords) => {
     return "select * from article where keywords REGEXP '" + keywords + "'"
 }
+exports.showComment = () => {
+    return "select * from comment;"
+}
+
+exports.findCommentById = (id) => {
+    return "select userName,title article_title,comment_text,c.release_time release_time from `comment` c INNER JOIN `user` u ON c.user_id = u.user_id  INNER JOIN article a ON c.article_id = a.id  where comment_id=" + id + ""
+}
+exports.deleteComment = (id) => {
+    return "delete from comment where comment_id=" + id + ""
+}
+
+exports.findCommentByArticle = (article_title) => {
+    return "select comment_id , userName,title article_title,comment_text,c.release_time release_time from `comment` c INNER JOIN `user` u ON c.user_id = u.user_id  INNER JOIN article a ON c.article_id = a.id  where a.title REGEXP '" + article_title + "'"
+}

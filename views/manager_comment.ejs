@@ -48,9 +48,9 @@
               <li><a href="/managerLogin" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
               <li><a data-toggle="modal" data-target="#WeChat">帮助</a></li>
             </ul>
-            <form action="" method="post" class="navbar-form navbar-right" role="search">
+            <form action="/managerSeekComment" method="post" class="navbar-form navbar-right seek" role="search">
               <div class="input-group">
-                <input type="text" class="form-control" autocomplete="off" placeholder="键入关键字搜索" maxlength="15">
+                <input type="text" class="form-control search" autocomplete="off" placeholder="键入关键字搜索" maxlength="15">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="submit">搜索</button>
                 </span>
@@ -95,31 +95,20 @@
                   <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
-                  <td class="article-title">这是测试评论摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-                  <td>2015-12-03</td>
-                  <td><a rel="1" name="see">查看</a> <a rel="1" name="delete">删除</a></td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
-                  <td class="article-title">这是测试评论摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-                  <td>2015-12-03</td>
-                  <td><a rel="2" name="see">查看</a> <a rel="2" name="delete">删除</a></td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
-                  <td class="article-title">这是测试评论摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-                  <td>2015-12-03</td>
-                  <td><a rel="3" name="see">查看</a> <a rel="3" name="delete">删除</a></td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
-                  <td class="article-title">这是测试评论摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-                  <td>2015-12-03</td>
-                  <td><a rel="4" name="see">查看</a> <a rel="4" name="delete">删除</a></td>
-                </tr>
+              <tbody class="tbody">
+                <% for(let com of data) {%>
+                  <tr>
+                    <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
+                    <td class="article-title">
+                      <%=com.comment_text%>
+                    </td>
+                    <td>
+                      <%=com.release_time%>
+                    </td>
+                    <td><a rel="<%=com.comment_id%>" name="see">查看</a> <a rel="<%=com.comment_id%>" name="delete">删除</a>
+                    </td>
+                  </tr>
+                  <% } %>
               </tbody>
             </table>
           </div>
@@ -155,38 +144,26 @@
           <h4 class="modal-title">查看评论</h4>
         </div>
         <div class="modal-body">
-          <table class="table" style="margin-bottom:0px;">
+          <table class="table table_see" style="margin-bottom:0px;">
             <thead>
               <tr> </tr>
             </thead>
             <tbody>
               <tr>
-                <td wdith="20%">评论ID:</td>
-                <td width="80%" class="see-comment-id"></td>
+                <td wdith="20%">评论用户:</td>
+                <td width="80%" class="see-comment-user"></td>
               </tr>
               <tr>
-                <td wdith="20%">评论页面:</td>
-                <td width="80%" class="see-comment-page"></td>
+                <td wdith="20%">来自文章:</td>
+                <td width="80%" class="see-comment-from"></td>
               </tr>
               <tr>
                 <td wdith="20%">评论内容:</td>
                 <td width="80%" class="see-comment-content"></td>
               </tr>
               <tr>
-                <td wdith="20%">IP:</td>
-                <td width="80%" class="see-comment-ip"></td>
-              </tr>
-              <tr>
-                <td wdith="20%">所在地:</td>
-                <td width="80%" class="see-comment-address"></td>
-              </tr>
-              <tr>
-                <td wdith="20%">系统:</td>
-                <td width="80%" class="see-comment-system"></td>
-              </tr>
-              <tr>
-                <td wdith="20%">浏览器:</td>
-                <td width="80%" class="see-comment-browser"></td>
+                <td wdith="20%">发布时间:</td>
+                <td width="80%" class="see-comment-time"></td>
               </tr>
             </tbody>
             <tfoot>
@@ -353,27 +330,22 @@
     </ul>
   </div>
   <script src="/js/manager_js/bootstrap.min.js"></script>
-  <script src="js/manager_js/admin-scripts.js"></script>
+  <script src="/js/manager_js/admin-scripts.js"></script>
   <script>
     $(function () {
-      $("#main table tbody tr td a").click(function () {
+      $(document).on('click', ".tbody tr td a", function () {
         var name = $(this);
         var id = name.attr("rel"); //对应id   
         if (name.attr("name") === "see") {
           $.ajax({
             type: "POST",
-            url: "/Comment/see",
+            url: "/managerSearchComment",
             data: "id=" + id,
-            cache: false, //不缓存此页面   
             success: function (data) {
-              var data = JSON.parse(data);
-              $('.see-comment-id').html(data.id);
-              $('.see-comment-page').html(data.page);
-              $('.see-comment-content').html(data.content);
-              $('.see-comment-ip').html(data.ip);
-              $('.see-comment-address').html(data.address);
-              $('.see-comment-system').html(data.system);
-              $('.see-comment-browser').html(data.browser);
+              $('.see-comment-user').html(data.comment.userName);
+              $('.see-comment-from').html(data.comment.article_title);
+              $('.see-comment-content').html(data.comment.comment_text);
+              $('.see-comment-time').html(data.comment.release_time);
               $('#seeComment').modal('show');
             }
           });
@@ -381,11 +353,13 @@
           if (window.confirm("此操作不可逆，是否确认？")) {
             $.ajax({
               type: "POST",
-              url: "/Comment/delete",
+              url: "/managerDeleteComment",
               data: "id=" + id,
               cache: false, //不缓存此页面   
               success: function (data) {
-                window.location.reload();
+                if (data.success == "del_ok") {
+                  window.location.reload()
+                }
               }
             });
           };
@@ -393,6 +367,42 @@
         return false;
       });
     });
+
+    $('.seek').on('submit', function (e) {
+      e.preventDefault()
+      let sValue = $('.search').val()
+      $.ajax({
+        type: 'post',
+        url: '/managerSeekComment',
+        data: { sValue: sValue },
+        success: (data) => {
+          let inner;
+          if (data.code == "0") {
+            for (let i = 0; i < data.comment.length; i++) {
+              inner += ` <tr>
+                    <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
+                    <td class="article-title">
+                      ${data.comment[i].article_title} 
+                    </td>
+                    <td>
+                      ${data.comment[i].release_time} 
+                    </td>
+                    <td><a rel="${data.comment[i].comment_id} " name="see">查看</a> <a rel="${data.comment[i].comment_id}" name="delete">删除</a>
+                    </td>
+                  </tr>`
+            }
+          } else if (data.code == "1") {
+            inner = "没有找到您所需的数据"
+          }
+
+          $('.tbody').html(inner)
+        },
+        error: (err) => {
+          console.log(err)
+        }
+      })
+    }
+    )
   </script>
 </body>
 

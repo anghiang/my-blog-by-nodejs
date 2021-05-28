@@ -45,7 +45,7 @@
                   <li><a title="查看您的登录记录" data-toggle="modal" data-target="#seeUserLoginlog">登录记录</a></li>
                 </ul>
               </li>
-              <li><a href="/Index/outLogin" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
+              <li><a href="/managerLogin" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
               <li><a data-toggle="modal" data-target="#WeChat">帮助</a></li>
             </ul>
             <form action="/managerSearch-article" method="post" class="navbar-form navbar-right" role="search">
@@ -103,7 +103,7 @@
                   <th><span class="glyphicon "></span> <span class="visible-lg">操作</span></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="tbody">
                 <% for(let ar of data) {%>
                   <tr>
                     <td><input type="checkbox" class="input-control" name="checkbox[]" value="" /></td>
@@ -315,7 +315,7 @@
     //是否确认删除
 
 
-    $("#main table tbody tr td a").click(function () {
+    $(document).on('click', ".tbody tr td a", function () {
       var name = $(this);
       var id = name.attr("rel"); //对应id  
       if (event.srcElement.outerText == "修改") {
@@ -371,7 +371,7 @@
       })
 
     })
-    $(" table tbody tr td a").click(function () {
+    $(document).on('click', ".tbody tr td a", function () {
       var name = $(this);
       var id = name.attr("rel"); //对应id  
       if (event.srcElement.outerText == "删除") {

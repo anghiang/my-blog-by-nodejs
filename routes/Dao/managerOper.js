@@ -68,3 +68,46 @@ exports.findArticleByName = (title, callback) => {
         }
     })
 }
+exports.showComment = (callback) => {
+    db.db(sql.showComment(), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data) {
+            callback(null, data)
+        }
+    })
+}
+exports.findCommentById = (id, callback) => {
+    db.db(sql.findCommentById(id), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data) {
+            callback(null, data)
+        }
+    })
+}
+exports.deleteComment = (id, res, callback) => {
+    db.db(sql.deleteComment(id), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data) {
+            res.json({ success: "del_ok" })
+        }
+    })
+
+}
+exports.findCommentByArticle = (article_title, callback) => {
+    db.db(sql.findCommentByArticle(article_title), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data.length != 0) {
+            callback(null, data, "0")
+        } else if (data.length == 0) {
+            callback(null, null, "1")
+        }
+    })
+}
