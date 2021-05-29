@@ -1,7 +1,6 @@
 const { renderFile } = require('ejs');
 const { json } = require('express');
 var express = require('express');
-let userOper = require('../Dao/userOper')
 var router = express.Router();
 
 router.get('/', function (req, res, next) {

@@ -1,9 +1,12 @@
 exports.registerSql = (body, time) => {
-    return 'insert into user(userName,sex,email,password,register_time)values("' + body.userName + '","' + body.sex + '","' + body.email + '","' + body.password + '","' + time + '");'
+    return 'insert into user(userName,sex,email,password,register_time,lastLogin_time)values("' + body.userName + '","' + body.sex + '","' + body.email + '","' + body.password + '","' + time + '","' + time + '");'
 }
 
 exports.loginSql = (body) => {
-    return "select userName,password from user where userName ='" + body.userName + "' and password ='" + body.password + "';"
+    return "select user_id,userName,password from user where userName ='" + body.userName + "' and password ='" + body.password + "';"
+}
+exports.updateLoginTime = (id, time) => {
+    return "update user set lastLogin_time='" + time + "' where user_id=" + id + ""
 }
 
 //判断用户是否存在
@@ -45,4 +48,7 @@ exports.deleteComment = (id) => {
 
 exports.findCommentByArticle = (article_title) => {
     return "select comment_id , userName,title article_title,comment_text,c.release_time release_time from `comment` c INNER JOIN `user` u ON c.user_id = u.user_id  INNER JOIN article a ON c.article_id = a.id  where a.title REGEXP '" + article_title + "'"
+}
+exports.showUser = () => {
+    return "select * from user;"
 }

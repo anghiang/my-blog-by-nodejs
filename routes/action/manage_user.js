@@ -4,6 +4,16 @@ let managerOper = require('../Dao/managerOper')
 let timeFormat = require('../Util/timeFormat')
 
 router.get('/', (req, res) => {
-    res.render('manage-user')
+    managerOper.showUser((err, data) => {
+        if (err) {
+            throw err
+        }
+        if (data) {
+            timeFormat.timeFormat(data, "register_time")
+            timeFormat.timeFormat(data, "lastLogin_time")
+            res.render('manage-user', { data: data })
+        }
+    })
+
 })
 module.exports = router;

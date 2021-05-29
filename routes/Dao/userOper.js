@@ -40,7 +40,6 @@ exports.userRegister = async (body, callback) => {
 }
 exports.userLogin = (body, callback) => {
     body.password = md5(md5(body.password))
-    console.log(body.password)
     db.db(sql.loginSql(body), (err, data, filed) => {
         if (err) {
             callback(err)
@@ -48,7 +47,15 @@ exports.userLogin = (body, callback) => {
         if (data.length == 0) {
             callback(null, '1')
         } else if (data.length == 1) {
+            console.log(data)
+            db.db(sql.updateLoginTime(data[0].user_id, getNowTime), (err) => {
+                if (err) {
+                    callback(err)
+                }
+            })
             callback(null, '0')
         }
     })
 }
+
+

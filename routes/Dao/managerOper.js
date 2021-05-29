@@ -111,3 +111,13 @@ exports.findCommentByArticle = (article_title, callback) => {
         }
     })
 }
+exports.showUser = (callback) => {
+    db.db(sql.showUser(), (err, data) => {
+        if (err) {
+            callback(data)
+        }
+        if (data) {
+            callback(null, data)
+        }
+    })
+}
