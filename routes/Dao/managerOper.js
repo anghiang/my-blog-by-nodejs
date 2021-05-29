@@ -121,3 +121,28 @@ exports.showUser = (callback) => {
         }
     })
 }
+exports.deleteUser = (id, res, callback) => {
+    db.db(sql.deleteUser(id), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data) {
+            res.json({ success: "del_ok" })
+        }
+    })
+
+}
+
+exports.findUserByName = (userName, callback) => {
+    db.db(sql.findUserByName(userName), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data.length != 0) {
+            callback(null, data, "0")
+        } else if (data.length == 0) {
+            callback(null, null, "1")
+        }
+    })
+}
+

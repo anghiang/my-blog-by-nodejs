@@ -52,3 +52,9 @@ exports.findCommentByArticle = (article_title) => {
 exports.showUser = () => {
     return "select * from user;"
 }
+exports.deleteUser = (id) => {
+    return "delete from user where user_id =" + id + ""
+}
+exports.findUserByName = (userName) => {
+    return "select * from user where userName REGEXP '" + userName + "'"
+}
