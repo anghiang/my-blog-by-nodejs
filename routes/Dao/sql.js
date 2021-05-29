@@ -9,6 +9,10 @@ exports.updateLoginTime = (id, time) => {
     return "update user set lastLogin_time='" + time + "' where user_id=" + id + ""
 }
 
+exports.managerLogin = (name, password) => {
+    return "select * from manager where name='" + name + "' and password='" + password + "'"
+}
+
 //判断用户是否存在
 exports.jdugeUser = (body) => {
     return "select * from user where userName = '" + body.userName + "';"

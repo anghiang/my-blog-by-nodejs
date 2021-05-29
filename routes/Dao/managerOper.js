@@ -4,6 +4,21 @@ let md5 = require('blueimp-md5')
 let sql = require('./sql')
 let getNowTime = require('../Util/getNowTime').getNowTime()
 
+exports.login = (name, password, callback) => {
+    db.db(sql.managerLogin(name, password), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data) {
+            if (data.length == 0) {
+                callback(null, "1")
+            } else if (data.length != 0) {
+                callback(null, "0")
+            }
+        }
+    })
+}
+
 exports.showArticle = (callback) => {
     db.db(sql.showArticle(), (err, data) => {
         if (err) {

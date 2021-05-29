@@ -1,16 +1,19 @@
-const { renderFile } = require('ejs');
-const { json } = require('express');
 var express = require('express');
+let managerOper = require('../Dao/managerOper');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
     res.render('manager_login');
 });
 router.post('/', function (req, res) {
-    let body = req.body
-    if (body.username == "杨志刚" && body.password == '123123') {
-        res.redirect('managerMain')
-    }
+    managerOper.login(req.body.userName, req.body.password, (err, code) => {
+        if (err) {
+            throw err
+        }
+        if (code) {
+            res.json({ code: code })
+        }
+    })
 })
 
 module.exports = router;
