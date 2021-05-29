@@ -4,6 +4,15 @@ let managerOper = require('../Dao/managerOper')
 let timeFormat = require('../Util/timeFormat')
 
 router.get('/', (req, res) => {
-    res.render('loginlog')
+    managerOper.showLoginLog((err, data) => {
+        if (err) {
+            throw err
+        }
+        if (data) {
+            timeFormat.timeFormat(data, "login_time")
+            res.render('loginlog', { data: data })
+        }
+    })
+
 })
 module.exports = router;

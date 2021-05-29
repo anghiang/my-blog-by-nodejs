@@ -58,3 +58,27 @@ exports.deleteUser = (id) => {
 exports.findUserByName = (userName) => {
     return "select * from user where userName REGEXP '" + userName + "'"
 }
+
+exports.addLoginLog = (user_id, time) => {
+    return "insert into loginLog (user_id,login_time)values(" + user_id + ",'" + time + "')"
+}
+exports.showLoginLog = () => {
+    return "SELECT l.id , u.user_id,userName,l.login_time FROM `loginlog` l INNER JOIN`user` u ON  l.user_id = u.user_id"
+}
+exports.deleteLoginLog = (id) => {
+    return "delete from loginlog where id =" + id + ""
+}
+
+exports.findLoginLogByUser = (userName) => {
+    return "SELECT l.id , u.user_id,userName,l.login_time FROM `loginlog` l INNER JOIN`user` u ON  l.user_id = u.user_id where userName REGEXP '" + userName + "'"
+}
+exports.deleteAllLoginLog = () => {
+    return " truncate table loginlog"
+}
+
+exports.countArticle = () => {
+    return "select COUNT(*) article_sum FROM article"
+}
+exports.countComment = () => {
+    return "select count(*) comment_sum from comment"
+}

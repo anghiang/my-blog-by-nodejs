@@ -146,3 +146,72 @@ exports.findUserByName = (userName, callback) => {
     })
 }
 
+exports.showLoginLog = (callback) => {
+    db.db(sql.showLoginLog(), (err, data) => {
+        if (err) {
+            callback(data)
+        }
+        if (data) {
+            callback(null, data)
+        }
+    })
+}
+exports.deleteLoginLog = (id, res, callback) => {
+    db.db(sql.deleteLoginLog(id), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data) {
+            res.json({ success: "del_ok" })
+        }
+    })
+
+}
+
+exports.findLoginLogByuser = (userName, callback) => {
+    db.db(sql.findLoginLogByUser(userName), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data.length != 0) {
+            callback(null, data, "0")
+        } else if (data.length == 0) {
+            callback(null, null, "1")
+        }
+    })
+}
+
+exports.deleteALLLoginLog = (res, callback) => {
+    db.db(sql.deleteAllLoginLog(), (err) => {
+        if (err) {
+            callback(err)
+        } else {
+            res.json({ success: "del_ok" })
+        }
+    })
+}
+
+exports.showMain = (callback) => {
+    let prom = new Promise((resolve, reject) => {
+        db.db(sql.countArticle(), (err, arSum) => {
+            if (err) {
+                callback(err)
+            }
+            if (arSum) {
+                resolve(arSum)
+            }
+        })
+    });
+    prom.then((arSum) => {
+        db.db(sql.countComment(), (err, comSum) => {
+            if (err) {
+                callback(err)
+            }
+            if (comSum) {
+                callback(null, comSum, arSum)
+            }
+        })
+    })
+
+}
+

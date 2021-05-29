@@ -47,8 +47,12 @@ exports.userLogin = (body, callback) => {
         if (data.length == 0) {
             callback(null, '1')
         } else if (data.length == 1) {
-            console.log(data)
             db.db(sql.updateLoginTime(data[0].user_id, getNowTime), (err) => {
+                if (err) {
+                    callback(err)
+                }
+            })
+            db.db(sql.addLoginLog(data[0].user_id, getNowTime), (err) => {
                 if (err) {
                     callback(err)
                 }

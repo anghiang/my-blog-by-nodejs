@@ -10,6 +10,8 @@ function makeDate(data, i, time) {
             Etime = data[i].register_time
         } else if (time == "lastLogin_time") {
             Etime = data[i].lastLogin_time
+        } else if (time == "login_time") {
+            Etime = data[i].login_time
         }
         var newDate = new Date(Etime);
 
@@ -49,6 +51,8 @@ function makeDate(data, i, time) {
             data[i].register_time = stringDate
         } else if (time == "lastLogin_time") {
             data[i].lastLogin_time = stringDate
+        } else if (time == "login_time") {
+            data[i].login_time = stringDate
         }
 
     }
