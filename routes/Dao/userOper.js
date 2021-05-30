@@ -62,6 +62,15 @@ exports.userLogin = (body, callback) => {
     })
 }
 
-
+exports.showArticle = (callback) => {
+    db.db(sql.showHomeArticle(), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data) {
+            callback(null, data)
+        }
+    })
+}
 
 

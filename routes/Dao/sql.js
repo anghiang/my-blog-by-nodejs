@@ -86,3 +86,7 @@ exports.countArticle = () => {
 exports.countComment = () => {
     return "select count(*) comment_sum from comment"
 }
+
+exports.showHomeArticle = () => {
+    return "SELECT u.user_id user_id, userName,title,keywords,content,release_time,page_view,thumbUpQuantity,head_portrait FROM `article` a LEFT JOIN `user` u ON a.user_id = u.user_id "
+}
