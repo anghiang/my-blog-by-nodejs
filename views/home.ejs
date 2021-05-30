@@ -14,7 +14,7 @@
     <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
     <meta http-equiv="Content-Language" content="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title>杨志刚的个人博客</title>
+    <title>yangleBlog</title>
     <link rel="shortcut icon" href="/images/Snipaste_2021-04-14_16-34-06.png" type="image/x-icon">
     <!--Layui-->
     <link href="/css/home_css/layui.css" rel="stylesheet" />
@@ -43,14 +43,14 @@
                 <img src="/images/14O9C292T360-C5X1.jpg" alt="杨志刚" title="杨志刚" />
             </a>
             <!-- 不落阁 -->
-            <a class="blog-logo" href="/home">杨志刚的个人博客</a>
+            <a class="blog-logo" href="/home">yangleBlog</a>
             <!-- 导航菜单 -->
             <ul class="layui-nav" lay-filter="nav">
                 <li class="layui-nav-item layui-this">
                     <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;博客首页</a>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+                    <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;留言墙</a>
                 </li>
                 <li class="layui-nav-item">
                     <a href="/resource"><i class="fa fa-tags fa-fw"></i>&nbsp;发表文章</a>
@@ -61,6 +61,16 @@
                 <li class="layui-nav-item">
                     <a href="/about"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
                 </li>
+                <li class="layui-nav-item" style="position: relative;
+                left: 107px;">
+                    <a href="JavaScript:;">&nbsp;杨志刚</a>
+                    <dl class="layui-nav-child" style="position: absolute;
+                    left: -29px;">
+                        <dd><a href="javascript:;" class="upload">修改头像</a></dd>
+                        <dd><a href="">查看或修改个人信息</a></dd>
+                    </dl>
+                </li>
+
             </ul>
             <!-- 手机和平板的导航开关 -->
             <a class="blog-navicon" href="javascript:;">
@@ -275,18 +285,8 @@
                         </div>
                         <p class="blogerinfo-nickname">杨志刚</p>
                         <p class="blogerinfo-introduce">一枚江软区块链学院的00后程序员</p>
-                        <p class="blogerinfo-location"><i class="fa fa-location-arrow"></i>&nbsp;江西-九江</p>
+                        <p class="blogerinfo-location"><i class="fa fa-location-arrow"></i>&nbsp;江西-九江-永修</p>
                         <hr />
-                        <div class="blogerinfo-contact">
-                            <a target="_blank" title="QQ交流" href="javascript:layer.msg('启动QQ会话窗口')"><i
-                                    class="fa fa-qq fa-2x"></i></a>
-                            <a target="_blank" title="给我写信" href="javascript:layer.msg('启动邮我窗口')"><i
-                                    class="fa fa-envelope fa-2x"></i></a>
-                            <a target="_blank" title="新浪微博" href="javascript:layer.msg('转到你的微博主页')"><i
-                                    class="fa fa-weibo fa-2x"></i></a>
-                            <a target="_blank" title="码云" href="javascript:layer.msg('转到你的github主页')"><i
-                                    class="fa fa-git fa-2x"></i></a>
-                        </div>
                     </div>
                     <div></div>
                     <!--占位-->
@@ -361,15 +361,53 @@
         <div><span>江西软件职业技术大学区块链学院</span></div>
         <div><span>开始于2021年4月14日星期三</span></div>
     </footer>
+    <!-- 上传头像 -->
+    <div class="s_box" id="sbox">
+        <div class="ft_img" id="ft_img">
+            <img src="/images/upload_img/01.png" class="t_img" />
+        </div>
+        <div class="header">
+            <p>设置头像</p>
+            <span class="close" id="close">x</span>
+        </div>
+        <hr width="80%" color="#e0e0eb" />
+        <div id="t_img">
+            <img src="/images/upload_img/01.png" />
+            <img src="/images/upload_img/02.png" />
+            <img src="/images/upload_img/03.png" />
+            <img src="/images/upload_img/04.png" />
+            <img src="/images/upload_img/05.png" />
+            <img src="/images/upload_img/06.png" />
+            <img src="/images/upload_img/07.png" />
+            <img src="/images/upload_img/01.png" />
+            <img src="/images/upload_img/02.png" />
+            <img src="/images/upload_img/03.png" />
+            <img src="/images/upload_img/04.png" />
+            <img src="/images/upload_img/05.png" />
+            <img src="/images/upload_img/06.png" />
+            <img src="/images/upload_img/07.png" />
+            <img src="/images/upload_img/04.png" />
+            <img src="/images/upload_img/05.png" />
+        </div>
+        <hr width="80%" color="#e0e0eb" />
+        <div class="bt_box">
+            <input type="file" name="file0" id="file0" accept="image/*" />
+            <a class="gb" href="javascript:" id="hide">关闭</a>
+            <a class="queren" href="javascript:" id="but">保存头像</a>
+        </div>
+    </div>
 
     <!--遮罩-->
     <!-- <div class="blog-mask animated layui-hide"></div> -->
     <!-- layui.js -->
+    <script src="/js/jquery-3.6.0.js"></script>
     <script src="/plug/layui/layui.js"></script>
     <!-- 全局脚本 -->
     <script src="/js/home_js/global.js"></script>
     <!-- 本页脚本 -->
     <script src="/js/home_js/home.js"></script>
+
+
 </body>
 
 </html>

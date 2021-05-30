@@ -153,3 +153,29 @@ window._bd_share_config = {
     "share": {}
 };
 with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+
+$(".upload").click(function () {
+    $("#sbox").show("slow");
+});
+$("#hide").click(function () {
+    $("#sbox").hide("slow");
+});
+$("#close").click(function () {
+    $("#sbox").hide("slow");
+});
+var $t_img = document.getElementById('t_img');
+var $img = $t_img.getElementsByTagName('img');
+var index = 0;
+for (var i = 0; i < $img.length; i++) {
+    $img[i].index = i;
+    $img[i].onclick = function () {
+        $img[index].style.borderRadius = "15%";
+        $img[index].style.border = "none"
+        this.style.borderRadius = "50%";
+        this.style.border = "1px solid red"
+        index = this.index;
+        var $newsrc = $img[index].src;
+        $(".t_img").attr('src', $newsrc);
+    }
+}

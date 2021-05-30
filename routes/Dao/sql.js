@@ -1,5 +1,5 @@
 exports.registerSql = (body, time) => {
-    return 'insert into user(userName,sex,email,password,register_time,lastLogin_time)values("' + body.userName + '","' + body.sex + '","' + body.email + '","' + body.password + '","' + time + '","' + time + '");'
+    return 'insert into user(userName,sex,email,password,register_time,lastLogin_time,head_portrait)values("' + body.userName + '","' + body.sex + '","' + body.email + '","' + body.password + '","' + time + '","' + time + '","/images/upload_img/01.png");'
 }
 
 exports.loginSql = (body) => {

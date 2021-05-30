@@ -5,8 +5,95 @@
 @Site：http://www.lyblogs.cn
 
 */
-
 /*全局样式*/
+/* 图片上传 */
+* {
+    text-decoration: none;
+}
+
+.s_box {
+    text-align: center;
+}
+
+.t_img {
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+}
+
+.s_box {
+    border-radius: 10px;
+    width: 500px;
+    height: auto;
+    border: 1px #c2c2d6 solid;
+    margin-left: 430px;
+    background-color: #c2c2d6;
+    position: fixed;
+    top: 135px;
+    left: -42px;
+    display: none;
+    z-index: 10;
+}
+
+.s_box img {
+    width: 61px;
+    height: 61px;
+    margin: 5px;
+    border: 1px solid #ccc;
+}
+
+.s_box img:hover {
+    border-color: red;
+    transform: scale(1.25);
+    transition: .5s;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.close {
+    color: #000;
+    font-size: 21px;
+    opacity: .7;
+    position: absolute;
+    right: 8px;
+    top: 1px;
+    cursor: pointer;
+}
+
+.bt_box .gb {
+    display: inline-block;
+    width: 80px;
+    height: 35px;
+    border-radius: 10px;
+    background: #f3f3f3;
+    color: #444;
+    line-height: 35px;
+    margin: 10px;
+}
+
+.bt_box .queren {
+    display: inline-block;
+    width: 80px;
+    height: 35px;
+    border-radius: 10px;
+    background: #1a53ff;
+    color: white;
+    line-height: 35px;
+}
+
+.bt_box .gb:hover,
+.bt_box .queren:hover {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+
 body {
     background: #eee;
     color: #444;
@@ -1117,3 +1204,5 @@ body {
         opacity: 0;
     }
 }
+
+
