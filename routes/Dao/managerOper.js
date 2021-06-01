@@ -4,7 +4,7 @@ let md5 = require('blueimp-md5')
 let sql = require('./sql')
 let getNowTime = require('../Util/getNowTime').getNowTime()
 
-exports.login = (name, password, callback) => {
+exports.login = (req, name, password, callback) => {
     db.db(sql.managerLogin(name, password), (err, data) => {
         if (err) {
             callback(err)
@@ -13,6 +13,7 @@ exports.login = (name, password, callback) => {
             if (data.length == 0) {
                 callback(null, "1")
             } else if (data.length != 0) {
+                req.session.manager = data[0]
                 callback(null, "0")
             }
         }

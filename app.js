@@ -30,6 +30,7 @@ let managerDeleteUserRouter = require('./routes/action/managerDeleteUser')
 let managerSearchUserRouter = require('./routes/action/managerSearchUser')
 let deleteLoginLogRouter = require('./routes/action/deleteLoginLog')
 let searchLoginLogRouter = require('./routes/action/searchLoginLog')
+let enterErrorRouter = require('./routes/action/enterError')
 
 
 
@@ -40,16 +41,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // session setup
-app.use(cookieParser());
+app.use(cookieParser('user'));
 app.use(session({
-  secret: 'loginSession',
-  resave: false,
+  secret: 'user',
+  resave: true,
   saveUninitialized: true,
   cookie: {
-    maxAge: 6000000
+    maxAge: 60000000
   },
   rolling: true
 }))
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -81,6 +84,8 @@ app.use('/managerDeleteUser', managerDeleteUserRouter)
 app.use('/managerSearchUser', managerSearchUserRouter)
 app.use('/deleteLoginLog', deleteLoginLogRouter)
 app.use('/searchLoginLog', searchLoginLogRouter)
+app.use('/enterError', enterErrorRouter)
+
 
 
 

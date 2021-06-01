@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
 });
 router.post('/', function (req, res) {
     let body = req.body
-    userOper.userLogin(body, (err, code) => {
+    userOper.userLogin(body, req, (err, code) => {
         if (err) {
             console.log(err)
         }

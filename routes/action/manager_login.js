@@ -6,7 +6,7 @@ router.get('/', function (req, res, next) {
     res.render('manager_login');
 });
 router.post('/', function (req, res) {
-    managerOper.login(req.body.userName, req.body.password, (err, code) => {
+    managerOper.login(req, req.body.userName, req.body.password, (err, code) => {
         if (err) {
             throw err
         }

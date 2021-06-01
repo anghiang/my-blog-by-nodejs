@@ -38,7 +38,7 @@ exports.userRegister = async (body, callback) => {
     })
 
 }
-exports.userLogin = (body, callback) => {
+exports.userLogin = (body, req, callback) => {
     body.password = md5(md5(body.password))
     db.db(sql.loginSql(body), (err, data, filed) => {
         if (err) {
@@ -47,6 +47,7 @@ exports.userLogin = (body, callback) => {
         if (data.length == 0) {
             callback(null, '1')
         } else if (data.length == 1) {
+            req.session.user = data[0]
             db.db(sql.updateLoginTime(data[0].user_id, getNowTime), (err) => {
                 if (err) {
                     callback(err)
@@ -58,6 +59,7 @@ exports.userLogin = (body, callback) => {
                 }
             })
             callback(null, '0')
+
         }
     })
 }

@@ -61,16 +61,22 @@
                 <li class="layui-nav-item">
                     <a href="/about"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
                 </li>
-                <li class="layui-nav-item" style="position: relative;
+                <%if(data){%>
+                    <li class="layui-nav-item" style="position: relative;
                 left: 107px;">
-                    <a href="JavaScript:;">&nbsp;杨志刚</a>
-                    <dl class="layui-nav-child" style="position: absolute;
+                        <a href="JavaScript:;">&nbsp;<%=user.userName%></a>
+                        <dl class="layui-nav-child" style="position: absolute;
                     left: -29px;">
-                        <dd><a href="javascript:;" class="upload">修改头像</a></dd>
-                        <dd><a href="">查看或修改个人信息</a></dd>
-                    </dl>
-                </li>
-
+                            <dd><a href="javascript:;" class="upload">修改头像</a></dd>
+                            <dd><a href="">查看或修改个人信息</a></dd>
+                        </dl>
+                    </li>
+                    <%} else {%>
+                        <li class="layui-nav-item" style="position: relative;
+                left: 107px;">
+                            <button>登入</button>
+                        </li>
+                        <%}%>
             </ul>
             <!-- 手机和平板的导航开关 -->
             <a class="blog-navicon" href="javascript:;">

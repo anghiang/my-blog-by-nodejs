@@ -11,10 +11,9 @@ router.get('/', (req, res) => {
       throw err
     }
     if (data) {
-      console.log(data)
       dataHandle.dataHandle(data)
       timeFormat.timeFormat(data, "release_time")
-      res.render('home', { data: data })
+      res.render('home', { data: data, user: req.session.user.userName })
     }
   })
 })
