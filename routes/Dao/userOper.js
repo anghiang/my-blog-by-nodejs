@@ -74,5 +74,16 @@ exports.showArticle = (callback) => {
         }
     })
 }
+exports.updateImg = (newImg, res, req, callback) => {
+    newImg = "/images/upload_img/" + newImg
+    req.session.user.head_portrait = newImg
+    db.db(sql.updateImg(newImg, req.session.user.user_id), (err) => {
+        if (err) {
+            callback(err)
+        } else {
+            res.redirect('/home')
+        }
+    })
+}
 
 

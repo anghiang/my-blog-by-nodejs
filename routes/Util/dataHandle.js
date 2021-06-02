@@ -6,6 +6,6 @@ exports.dataHandle = (data) => {
         if (data[i].head_portrait == null) {
             data[i].head_portrait = "/images/upload_img/01.png"
         }
-        data[i].content = data[i].content.substring(0, 20) + "......"
+        data[i].content = data[i].content.substring(0, 100) + "......"
     }
 }

@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     if (data) {
       dataHandle.dataHandle(data)
       timeFormat.timeFormat(data, "release_time")
-      res.render('home', { data: data, user: req.session.user.userName })
+      res.render('home', { data: data, user: req.session.user })
     }
   })
 })

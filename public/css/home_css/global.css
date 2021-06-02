@@ -84,6 +84,8 @@
     background: #1a53ff;
     color: white;
     line-height: 35px;
+    outline: none;
+    border: none;
 }
 
 .bt_box .gb:hover,

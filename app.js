@@ -31,6 +31,8 @@ let managerSearchUserRouter = require('./routes/action/managerSearchUser')
 let deleteLoginLogRouter = require('./routes/action/deleteLoginLog')
 let searchLoginLogRouter = require('./routes/action/searchLoginLog')
 let enterErrorRouter = require('./routes/action/enterError')
+let exitLoginRouter = require('./routes/action/exitLogin')
+let updateImgRouter = require('./routes/action/updateImg')
 
 
 
@@ -47,7 +49,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   cookie: {
-    maxAge: 60000000
+    maxAge: 1000 * 60 * 60 * 24
   },
   rolling: true
 }))
@@ -85,6 +87,9 @@ app.use('/managerSearchUser', managerSearchUserRouter)
 app.use('/deleteLoginLog', deleteLoginLogRouter)
 app.use('/searchLoginLog', searchLoginLogRouter)
 app.use('/enterError', enterErrorRouter)
+app.use('/exitLogin', exitLoginRouter)
+app.use('/updateImg', updateImgRouter)
+
 
 
 

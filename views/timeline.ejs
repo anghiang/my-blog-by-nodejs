@@ -33,45 +33,57 @@
     <nav class="blog-nav layui-header">
         <div class="blog-container">
             <!-- QQ互联登陆 -->
-            <a href="javascript:;" class="blog-user">
-                <i class="fa fa-qq"></i>
-            </a>
-            <a href="javascript:;" class="blog-user layui-hide">
-                <img src="/images/Absolutely.jpg" alt="Absolutely" title="Absolutely" />
-            </a>
-            <!-- 不落阁 -->
-            <a class="blog-logo" href="/home">yangleBlog</a>
-            <!-- 导航菜单 -->
-            <ul class="layui-nav" lay-filter="nav">
-                <li class="layui-nav-item">
-                    <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;留言墙</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="/resource"><i class="fa fa-tags fa-fw"></i>&nbsp;发表文章</a>
-                </li>
-                <li class="layui-nav-item layui-this">
-                    <a href="/timeline"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="/about"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
-                </li>
-                <li class="layui-nav-item" style="position: relative;
+            <%if(user){%>
+                <a href="javascript:;" class="blog-user upload">
+                    <img src="<%=user.head_portrait%> " alt="<%=user.userName%>" title="<%=user.userName%>" />
+                </a>
+                <%} else {%>
+                    <a href="javascript:;" class="blog-user ">
+                        <img src="/images/14O9C292T360-C5X1.jpg" alt="无用户" title="无用户" />
+                    </a>
+                    <%}%>
+                        <!-- 不落阁 -->
+                        <a class="blog-logo" href="/home">yangleBlog</a>
+                        <!-- 导航菜单 -->
+                        <ul class="layui-nav" lay-filter="nav">
+                            <li class="layui-nav-item ">
+                                <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;博客首页</a>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;留言墙</a>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="/resource"><i class="fa fa-tags fa-fw"></i>&nbsp;发表文章</a>
+                            </li>
+                            <li class="layui-nav-item layui-this">
+                                <a href="/timeline"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="/about"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+                            </li>
+                            <%if(user){%>
+                                <li class="layui-nav-item" style="position: relative;
                 left: 107px;">
-                    <a href="JavaScript:;">&nbsp;杨志刚</a>
-                    <dl class="layui-nav-child" style="position: absolute;
+                                    <a href="JavaScript:;">&nbsp;<%=user.userName%></a>
+                                    <dl class="layui-nav-child" style="position: absolute;
                     left: -29px;">
-                        <dd><a href="javascript:;" class="upload">修改头像</a></dd>
-                        <dd><a href="">查看或修改个人信息</a></dd>
-                    </dl>
-                </li>
-            </ul>
-            <!-- 手机和平板的导航开关 -->
-            <a class="blog-navicon" href="javascript:;">
-                <i class="fa fa-navicon"></i>
-            </a>
+
+                                        <dd><a href="">查看或修改个人信息</a></dd>
+                                        <dd><a class="exitLogin">退出登入</a></dd>
+                                    </dl>
+                                </li>
+                                <%} else {%>
+                                    <li class="layui-nav-item" style="position: relative;
+                left: 107px;">
+                                        <button type="button" class="layui-btn layui-btn-normal layui-btn-radius "
+                                            id="login">登入</button>
+                                    </li>
+                                    <%}%>
+                        </ul>
+                        <!-- 手机和平板的导航开关 -->
+                        <a class="blog-navicon" href="javascript:;">
+                            <i class="fa fa-navicon"></i>
+                        </a>
         </div>
     </nav>
     <!-- 主体（一般只改变这里的内容） -->
@@ -241,40 +253,25 @@
     </footer>
 
     <!-- 上传头像 -->
-    <div class="s_box" id="sbox">
-        <div class="ft_img" id="ft_img">
-            <img src="/images/upload_img/01.png" class="t_img" />
+    <form action="/updateImg" method="POST" enctype="multipart/form-data">
+        <div class="s_box" id="sbox">
+            <div class="ft_img" id="ft_img">
+                <img src="<%if (user){ %> <%=user.head_portrait%> <%}else{%>/images/upload_img/01.png<%}%> "
+                    class="t_img" />
+            </div>
+            <div class="header">
+                <p>设置头像</p>
+                <span class="close" id="close">x</span>
+            </div>
+
+            <hr width="80%" color="#e0e0eb" />
+            <div class="bt_box">
+                <input type="file" name="file0" id="file0" accept="image/*" />
+                <a class="gb" href="javascript:" id="hide">关闭</a>
+                <input type="submit" class="queren" href="javascript:" id="but" value="保存头像">
+            </div>
         </div>
-        <div class="header">
-            <p>设置头像</p>
-            <span class="close" id="close">x</span>
-        </div>
-        <hr width="80%" color="#e0e0eb" />
-        <div id="t_img">
-            <img src="/images/upload_img/01.png" />
-            <img src="/images/upload_img/02.png" />
-            <img src="/images/upload_img/03.png" />
-            <img src="/images/upload_img/04.png" />
-            <img src="/images/upload_img/05.png" />
-            <img src="/images/upload_img/06.png" />
-            <img src="/images/upload_img/07.png" />
-            <img src="/images/upload_img/01.png" />
-            <img src="/images/upload_img/02.png" />
-            <img src="/images/upload_img/03.png" />
-            <img src="/images/upload_img/04.png" />
-            <img src="/images/upload_img/05.png" />
-            <img src="/images/upload_img/06.png" />
-            <img src="/images/upload_img/07.png" />
-            <img src="/images/upload_img/04.png" />
-            <img src="/images/upload_img/05.png" />
-        </div>
-        <hr width="80%" color="#e0e0eb" />
-        <div class="bt_box">
-            <input type="file" name="file0" id="file0" accept="image/*" />
-            <a class="gb" href="javascript:" id="hide">关闭</a>
-            <a class="queren" href="javascript:" id="but">保存头像</a>
-        </div>
-    </div>
+    </form>
     <script src="/js/jquery-3.6.0.js"></script>
     <!--遮罩-->
     <div class="blog-mask animated layui-hide"></div>

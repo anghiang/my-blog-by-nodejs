@@ -9,14 +9,14 @@
 layui.use(['element', 'layer', 'util', 'form'], function () {
     var $ = layui.jquery;
     //模拟QQ登陆
-    $('.blog-user').click(function () {
-        var user = this;
-        var index = layer.load(1);
-        setTimeout(function () {
-            layer.close(index);
-            $(user).toggleClass('layui-hide').siblings('a.blog-user').toggleClass('layui-hide');
-        }, 800);
-    });
+    // $('.blog-user').click(function () {
+    //     var user = this;
+    //     var index = layer.load(1);
+    //     setTimeout(function () {
+    //         layer.close(index);
+    //         $(user).toggleClass('layui-hide').siblings('a.blog-user').toggleClass('layui-hide');
+    //     }, 800);
+    // });
     //分享工具
     // layui.util.fixbar({
     //     bar1: '&#xe641;',
@@ -164,18 +164,50 @@ $("#hide").click(function () {
 $("#close").click(function () {
     $("#sbox").hide("slow");
 });
-var $t_img = document.getElementById('t_img');
-var $img = $t_img.getElementsByTagName('img');
-var index = 0;
-for (var i = 0; i < $img.length; i++) {
-    $img[i].index = i;
-    $img[i].onclick = function () {
-        $img[index].style.borderRadius = "15%";
-        $img[index].style.border = "none"
-        this.style.borderRadius = "50%";
-        this.style.border = "1px solid red"
-        index = this.index;
-        var $newsrc = $img[index].src;
-        $(".t_img").attr('src', $newsrc);
+
+$("#file0").change(function () {
+    var objUrl = getObjectURL(this.files[0]);
+    if (objUrl) {
+        $(".t_img").attr("src", objUrl);
     }
+});
+//创建一个可存取到该file的url  
+function getObjectURL(file) {
+    var url = null;
+    // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+    if (window.createObjectURL != undefined) { // basic  
+        url = window.createObjectURL(file);
+    } else if (window.URL != undefined) { // mozilla(firefox)  
+        url = window.URL.createObjectURL(file);
+    } else if (window.webkitURL != undefined) { // webkit or chrome  
+        url = window.webkitURL.createObjectURL(file);
+    }
+    return url;
 }
+
+
+
+
+
+
+$('.exitLogin').on('click', function () {
+    if (window.confirm("确定要退出登入吗")) {
+        $.ajax({
+            type: "get",
+            url: "/exitLogin?confirm=yes",
+            dataType: 'json',
+            success: function (data) {
+                if (data.success == "exit_ok") {
+                    window.location.href = "/home";
+                }
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
+    };
+
+});
+$('#login').click(() => {
+    window.location.href = '/'
+})

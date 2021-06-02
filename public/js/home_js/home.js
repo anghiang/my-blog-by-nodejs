@@ -207,3 +207,4 @@ function resizeCanvas() {
     canvas.width = window.document.body.clientWidth;
     canvas.height = window.innerHeight * 1 / 3;
 }
+

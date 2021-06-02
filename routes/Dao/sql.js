@@ -3,7 +3,7 @@ exports.registerSql = (body, time) => {
 }
 
 exports.loginSql = (body) => {
-    return "select user_id,userName,password from user where userName ='" + body.userName + "' and password ='" + body.password + "';"
+    return "select * from user where userName ='" + body.userName + "' and password ='" + body.password + "';"
 }
 exports.updateLoginTime = (id, time) => {
     return "update user set lastLogin_time='" + time + "' where user_id=" + id + ""
@@ -89,4 +89,8 @@ exports.countComment = () => {
 
 exports.showHomeArticle = () => {
     return "SELECT u.user_id user_id, userName,title,keywords,content,release_time,page_view,thumbUpQuantity,head_portrait FROM `article` a LEFT JOIN `user` u ON a.user_id = u.user_id "
+}
+
+exports.updateImg = (newImg, id) => {
+    return "update user set head_portrait='" + newImg + "' where user_id=" + id + ""
 }
