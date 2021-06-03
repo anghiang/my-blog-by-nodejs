@@ -33,6 +33,7 @@ let searchLoginLogRouter = require('./routes/action/searchLoginLog')
 let enterErrorRouter = require('./routes/action/enterError')
 let exitLoginRouter = require('./routes/action/exitLogin')
 let updateImgRouter = require('./routes/action/updateImg')
+let addArticleRouter = require('./routes/action/addArticle')
 
 
 
@@ -89,6 +90,7 @@ app.use('/searchLoginLog', searchLoginLogRouter)
 app.use('/enterError', enterErrorRouter)
 app.use('/exitLogin', exitLoginRouter)
 app.use('/updateImg', updateImgRouter)
+app.use('/addAticle', addArticleRouter)
 
 
 

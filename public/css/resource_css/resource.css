@@ -194,3 +194,7 @@
         margin-right: 0;
     }
 }
+
+.layui-input{
+    border-color: #bbb4b4;
+}

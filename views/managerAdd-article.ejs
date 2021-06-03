@@ -86,16 +86,19 @@
             <div class="col-md-9">
               <h1 class="page-header">撰写新文章</h1>
               <div class="form-group">
+                <h2 class="add-article-box-title"><span>标题:</span></h2>
                 <label for="article-title" class="sr-only">标题</label>
                 <input type="text" id="article-title" name="title" class="form-control" placeholder="在此处输入标题" required
                   autofocus autocomplete="off">
               </div>
               <div class="form-group">
+                <h2 class="add-article-box-title"><span>内容:</span></h2>
                 <label for="article-content" class="sr-only">内容</label>
-                <script id="article-content" name="content" type="text"></script>
+                <textarea class="form-control" rows="30" placeholder="请输入内容" name="content"></textarea>
               </div>
+
               <div class="add-article-box">
-                <h2 class="add-article-box-title"><span>关键字</span></h2>
+                <h2 class="add-article-box-title"><span>关键字:</span></h2>
                 <div class="add-article-box-content">
                   <input type="text" class="form-control" placeholder="请输入关键字" name="keywords" autocomplete="off">
                   <span class="prompt-text">多个标签请用英文逗号,隔开。</span>

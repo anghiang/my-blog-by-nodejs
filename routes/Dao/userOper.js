@@ -86,4 +86,31 @@ exports.updateImg = (newImg, res, req, callback) => {
     })
 }
 
+exports.addArticle = (id, body, res, callback) => {
+    db.db(sql.addArticle(id, body, getNowTime), (err) => {
+        if (err) {
+            callback(err)
+        } else {
+            res.json({ code: '0' })
+        }
+    })
+}
+
+exports.showArticleDetail = (id, callback) => {
+    db.db(sql.showArticleDetail(id), (err, data) => {
+        if (err) {
+            callback(err)
+        }
+        if (data) {
+            callback(null, data)
+        }
+    })
+}
+exports.updatePage_view = (id, callback) => {
+    db.db(sql.updatepage_view(id), (err) => {
+        if (err) {
+            callback(err)
+        }
+    })
+}
 

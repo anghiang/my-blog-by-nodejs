@@ -19,7 +19,7 @@ exports.jdugeUser = (body) => {
 }
 
 exports.M_addArticle = (body, time) => {
-    return 'insert into article(title,content,keywords,release_time,page_view,thumbUpQuantity,commentSum,update_time)values("' + body.title + '","' + body.content + '","' + body.keywords + '","' + time + '",0,0,0,"' + time + '");'
+    return 'insert into article(user_id,title,content,keywords,release_time,page_view,thumbUpQuantity,commentSum,update_time)values(17,"' + body.title + '","' + body.content + '","' + body.keywords + '","' + time + '",0,0,0,"' + time + '");'
 }
 
 exports.showArticle = () => {
@@ -88,9 +88,19 @@ exports.countComment = () => {
 }
 
 exports.showHomeArticle = () => {
-    return "SELECT u.user_id user_id, userName,title,keywords,content,release_time,page_view,thumbUpQuantity,head_portrait FROM `article` a LEFT JOIN `user` u ON a.user_id = u.user_id "
+    return "SELECT a.id id, u.user_id user_id, userName,title,keywords,content,release_time,page_view,thumbUpQuantity,head_portrait FROM `article` a LEFT JOIN `user` u ON a.user_id = u.user_id order by id desc"
 }
 
 exports.updateImg = (newImg, id) => {
     return "update user set head_portrait='" + newImg + "' where user_id=" + id + ""
+}
+
+exports.addArticle = (id, body, time) => {
+    return 'insert into article(user_id,title,content,keywords,release_time,page_view,thumbUpQuantity,commentSum,update_time)values(' + id + ',"' + body.title + '","' + body.content + '","' + body.keywords + '","' + time + '",0,0,0,"' + time + '");'
+}
+exports.showArticleDetail = (id) => {
+    return "SELECT userName,title,content,release_time,page_view,thumbUpQuantity FROM `article` a LEFT JOIN `user` u ON a.user_id = u.user_id where id =" + id + ""
+}
+exports.updatepage_view = (id) => {
+    return "update article set page_view = page_view+1 where id =" + id + ""
 }

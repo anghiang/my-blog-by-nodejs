@@ -5,7 +5,12 @@ let managerOper = require('../Dao/managerOper')
 var router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('managerAdd-article')
+    if (req.session.manager) {
+        res.render('managerAdd-article')
+    } else {
+        res.redirect('/enterError')
+    }
+
 })
 
 router.post('/', (req, res) => {

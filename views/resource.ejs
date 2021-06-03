@@ -15,6 +15,7 @@
     <meta http-equiv="Content-Language" content="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>不落阁 - 发表文章</title>
+    <!-- 弹出框 -->
     <link rel="shortcut icon" href="/images/Logo_40.png" type="image/x-icon">
     <!--Layui-->
     <link href="/plug/layui/css/layui.css" rel="stylesheet" />
@@ -94,7 +95,7 @@
             </div>
         </div>
         <div class="layui-row">
-            <form class="layui-form" action="" id="form_1">
+            <form class="layui-form" action="/addArticle" id="form_1">
                 <div class="blog-module shadow" style="box-shadow: 0 1px 8px #a6a6a6;">
                     <fieldset class="layui-elem-field layui-field-title" style="margin-bottom:0">
 
@@ -105,11 +106,18 @@
                                     autocomplete="off" class="layui-input">
                             </div>
                         </div>
-
                         <div class="layui-form-item">
+                            <label class="layui-form-label">关键词:</label>
+                            <div class="layui-input-block" style="width: 200px;">
+                                <input type="text" name="keywords" required lay-verify="required"
+                                    placeholder="请输入关于文章的关键词" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
                             <label class="layui-form-label">文章内容:</label>
                             <div class="layui-input-block">
-                                <textarea id="demo" placeholder="请输入内容" class="layui-textarea "></textarea>
+                                <textarea placeholder="请输入内容" class="layui-textarea layui-input" name="content"
+                                    style="height: 360px;"></textarea>
                             </div>
                         </div>
 
@@ -152,6 +160,7 @@
             </div>
         </div>
     </form>
+    <!-- 弹出框 -->
     <script src="/js/jquery-3.6.0.js"></script>
     <!--遮罩-->
     <!-- <div class="blog-mask animated layui-hide"></div> -->
@@ -160,6 +169,30 @@
     <!-- 全局脚本 -->
     <script src="/js/home_js/global.js"></script>
     <script src="/js/layedite_js/layedite.js"></script>
+    <script>
+        $('#form_1').on('submit', function (e) {
+            e.preventDefault()
+            let formData = $(this).serialize()
+            $.ajax({
+                type: 'post',
+                url: '/addAticle',
+                dataType: 'json',
+                data: formData,
+                success: (data) => {
+                    if (data.code == "1") {
+                        alert("请先登入后再发表")
+                    } else if (data.code == "0") {
+                        alert('发布成功')
+                        window.location.href = "/home"
+                    }
+                },
+                error: (err) => {
+                    console.log(err)
+                }
+
+            })
+        })
+    </script>
 
 </body>
 
